@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "The short description of the extension, displayed in the web store",
+      "message": "Websites track you. They collect your personal information. With Privasee, you can finally browse the internet with peace of mind!"
+   },
+   "appName": {
+      "description": "The title of the extension, displayed in the web store",
+      "message": "Privasee"
+   }
+}
