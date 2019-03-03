@@ -3144,7 +3144,7 @@ function numberIsNaN (obj) {
  *
  * Apache License Version 2.0, January 2004, http://www.apache.org/licenses/
  */
- 
+
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -3747,7 +3747,7 @@ function promisableChain(f1, f2) {
 //   native async / await.
 // * Promise.follow() method built upon the custom zone engine, that allows user to track all promises created from current stack frame
 //   and below + all promises that those promises creates or awaits.
-// * Detect any unhandled promise in a PSD-scope (PSD.onunhandled). 
+// * Detect any unhandled promise in a PSD-scope (PSD.onunhandled).
 //
 // David Fahlander, https://github.com/dfahlander
 //
@@ -3803,7 +3803,7 @@ var schedulePhysicalTick = resolvedGlobalPromise ?
                 } :
                 // No support for setImmediate or MutationObserver. No worry, setTimeout is only called
                 // once time. Every tick that follows will be our emulated micro tick.
-                // Could have uses setTimeout.bind(null, 0, physicalTick) if it wasnt for that FF13 and below has a bug 
+                // Could have uses setTimeout.bind(null, 0, physicalTick) if it wasnt for that FF13 and below has a bug
                 function () { setTimeout(physicalTick, 0); };
 // Configurable through Promise.scheduler.
 // Don't export because it would be unsafe to let unknown
@@ -3984,7 +3984,7 @@ function Listener(onFulfilled, onRejected, resolve, reject, zone) {
 props(Promise, {
     all: function () {
         var values = getArrayOf.apply(null, arguments) // Supports iterables, implicit arguments and array-like.
-            .map(onPossibleParallellAsync); // Handle parallell async/awaits 
+            .map(onPossibleParallellAsync); // Handle parallell async/awaits
         return new Promise(function (resolve, reject) {
             if (values.length === 0)
                 resolve([]);
@@ -4627,7 +4627,7 @@ var isIEOrEdge = typeof navigator !== 'undefined' && /(MSIE|Trident|Edge)/.test(
 var hasIEDeleteObjectStoreBug = isIEOrEdge;
 var hangsOnDeleteLargeKeyRange = isIEOrEdge;
 var dexieStackFrameFilter = function (frame) { return !/(dexie\.js|dexie\.min\.js)/.test(frame); };
-var dbNamesDB; // Global database for backing Dexie.getDatabaseNames() on browser without indexedDB.webkitGetDatabaseNames() 
+var dbNamesDB; // Global database for backing Dexie.getDatabaseNames() on browser without indexedDB.webkitGetDatabaseNames()
 // Init debug
 setDebug(debug, dexieStackFrameFilter);
 function Dexie(dbName, options) {
@@ -4816,7 +4816,7 @@ function Dexie(dbName, options) {
                 adjustToExistingIndexNames(newSchema, idbtrans);
                 globalSchema = db._dbSchema = newSchema;
                 var diff = getSchemaDiff(oldSchema, newSchema);
-                // Add tables           
+                // Add tables
                 diff.add.forEach(function (tuple) {
                     createTable(idbtrans, tuple[0], tuple[1].primKey, tuple[1].indexes);
                 });
@@ -5022,7 +5022,7 @@ function Dexie(dbName, options) {
         dbOpenError = null;
         openComplete = false;
         // Function pointers to call when the core opening process completes.
-        var resolveDbReady = dbReadyResolve, 
+        var resolveDbReady = dbReadyResolve,
         // upgradeTransaction to abort on failure.
         upgradeTransaction = null;
         return Promise.race([openCanceller, new Promise(function (resolve, reject) {
@@ -5207,7 +5207,7 @@ function Dexie(dbName, options) {
                     // Database already open. Call subscriber asap.
                     if (!dbOpenError)
                         Promise.resolve().then(subscriber);
-                    // bSticky: Also subscribe to future open sucesses (after close / reopen) 
+                    // bSticky: Also subscribe to future open sucesses (after close / reopen)
                     if (bSticky)
                         subscribe(subscriber);
                 }
@@ -5367,7 +5367,7 @@ function Dexie(dbName, options) {
                     Promise.resolve(returnValue).then(function (x) { return trans.active ?
                         x // Transaction still active. Continue.
                         : rejection(new exceptions.PrematureCommit("Transaction committed too early. See http://bit.ly/2kdckMn")); })
-                    // No promise returned. Wait for all outstanding promises before continuing. 
+                    // No promise returned. Wait for all outstanding promises before continuing.
                     : promiseFollowed.then(function () { return returnValue; })).then(function (x) {
                     // sub transactions don't react to idbtrans.oncomplete. We must trigger a completion:
                     if (parentTransaction)
@@ -5492,7 +5492,7 @@ function Dexie(dbName, options) {
                 return new WhereClause(this, indexOrCrit);
             if (isArray(indexOrCrit))
                 return new WhereClause(this, "[" + indexOrCrit.join('+') + "]");
-            // indexOrCrit is an object map of {[keyPath]:value} 
+            // indexOrCrit is an object map of {[keyPath]:value}
             var keyPaths = keys(indexOrCrit);
             if (keyPaths.length === 1)
                 // Only one critera. This was the easy case:
@@ -7384,7 +7384,7 @@ function getNativeGetDatabaseNamesFn(indexedDB) {
 props(Dexie, fullNameExceptions); // Dexie.XXXError = class XXXError {...};
 //
 // Static methods and properties
-// 
+//
 props(Dexie, {
     //
     // Static delete() method.
@@ -7501,7 +7501,7 @@ props(Dexie, {
     waitFor: function (promiseOrFunction, optionalTimeout) {
         // If a function is provided, invoke it and pass the returning value to Transaction.waitFor()
         var promise = Promise.resolve(typeof promiseOrFunction === 'function' ? Dexie.ignoreTransaction(promiseOrFunction) : promiseOrFunction)
-            .timeout(optionalTimeout || 60000); // Default the timeout to one minute. Caller may specify Infinity if required.       
+            .timeout(optionalTimeout || 60000); // Default the timeout to one minute. Caller may specify Infinity if required.
         // Run given promise on current transaction. If no current transaction, just return a Dexie promise based
         // on given value.
         return PSD.trans ? PSD.trans.waitFor(promise) : promise;
@@ -7720,7 +7720,7 @@ JSBloom.filter = function(items, target_prob) {
             var hash = 5381;
 
             for (var len = str.length, count = 0; count < len; count++) {
-                hash = hash * 33 ^ str.charCodeAt(count);   
+                hash = hash * 33 ^ str.charCodeAt(count);
             };
 
             return (hash >>> 0) % BUFFER_LEN;
@@ -7747,7 +7747,7 @@ JSBloom.filter = function(items, target_prob) {
                          : (h1 + (round * h2) + (round^2)) % BUFFER_LEN;
 
             var extra_indices = new_hash % 8,
-                index = ((new_hash - extra_indices) / 8); 
+                index = ((new_hash - extra_indices) / 8);
 
             if (extra_indices != 0 && (bVector[index] & (128 >> (extra_indices - 1))) == 0) {
                 bVector[index] ^= (128 >> extra_indices - 1);
@@ -7798,7 +7798,7 @@ JSBloom.filter = function(items, target_prob) {
         for (var round = 2; round <= HASH_ROUNDS; round++) {
             var new_hash = round==0?h1:round==1?h2:(h1 + (round * h2) + (round^2)) % BUFFER_LEN;
             var extra_indices = new_hash % 8,
-                index = ((new_hash - extra_indices) / 8); 
+                index = ((new_hash - extra_indices) / 8);
 
             if (extra_indices != 0 && (bVector[index] & (128 >> (extra_indices - 1))) == 0) {
                 return false;
@@ -11174,7 +11174,7 @@ module.exports={
             "bad": [
                 "they can use your content for all their existing and future services",
                 "tracks you on other websites",
-                "logs are kept forever"
+                "device fingerprinting"
             ],
             "good": []
         },
@@ -17999,6 +17999,24 @@ module.exports={
             ]
         },
         "class": "D"
+    },
+    "getprivasee.com": {
+        "score": -100,
+        "all": {
+            "bad": [],
+            "good": [
+                "no tracking",
+                "does not collect any data"
+            ]
+        },
+        "match": {
+            "bad": [],
+            "good": [
+                "no tracking",
+                "does not collect any data"
+            ]
+        },
+        "class": "A"
     }
 }
 
