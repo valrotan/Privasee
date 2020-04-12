@@ -1,1 +1,16 @@
 .DS_Store
+*.pem
+jshint_log.txt
+node_modules
+npm-debug.log
+.cache
+*.map
+public/js/*.*
+public/css/*.*
+*.swp
+*.swo
+build/firefox
+build/chrome
+build/safari
+build/test
+test/background.js

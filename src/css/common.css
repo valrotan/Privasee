@@ -1,0 +1,143 @@
+@font-face {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-style: normal;
+    src: url('fonts/fontawesome-webfont.ttf') format('truetype');
+    }
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+body {
+    background-color: var(--bg-0);
+    border: 0;
+    box-sizing: border-box;
+    color: var(--fg-0);
+    fill: var(--fg-0);
+    font: 14px/1.5 sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+code {
+    background-color: #eee;
+    padding: 0 0.25em;
+    }
+textarea {
+    font-size: 90%;
+    }
+/* I designed the button with: http://charliepark.org/bootstrap_buttons/ */
+button.custom {
+    align-items: flex-end;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: var(--bg-button);
+    color: var(--fg-button)
+    display: inline-flex;
+    padding: 0.6em 1em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    }
+button.custom:hover {
+    background-color: #d4d4d4;
+    }
+button.custom.important {
+    background-color: #ffddaa;
+    }
+button.custom.important:hover {
+    background-color: #ffcc80;
+    }
+button.custom.disabled,
+button.custom[disabled],
+button.custom.important.disabled,
+button.custom.important[disabled] {
+    background-color: var(--bg-button-disabled);
+    color: var(--fg-button-disabled);
+    pointer-events: none;
+    }
+button.custom.iconifiable > .fa,
+button.custom.iconifiable > .fa-icon {
+    padding-right: 0.5em;
+    }
+body[dir="rtl"] button.custom.iconifiable > .fa,
+body[dir="rtl"] button.custom.iconifiable > .fa-icon {
+    padding-left: 0.5em;
+    }
+.hidden {
+    display: none;
+    height: 0;
+    visibility: hidden;
+    width: 0;
+    }
+label {
+    align-items: center;
+    display: inline-flex;
+    }
+@media (pointer: coarse) {
+    label {
+        flex-grow: 1
+        }
+}
+input[type="checkbox"] {
+    margin: 0;
+    margin-inline-start: 0.4em;
+    -webkit-margin-start: 0.4em;
+    margin-inline-end: 0.4em;
+    -webkit-margin-end: 0.4em;
+    }
+.ul {
+    margin: 0.5em 0;
+    }
+.li {
+    align-items: center;
+    display: flex;
+    margin: 0.5em 0;
+    }
+.liul {
+    margin: 0.5em 0;
+    margin-inline-start: 2em;
+    -webkit-margin-start: 2em;
+    }
+@media (max-width: 640px) {
+    button.custom.iconifiable > .fa,
+    button.custom.iconifiable > .fa-icon {
+        font-size: 120%;
+        padding: 0;
+        }
+    button.custom.iconifiable > [data-i18n] {
+        display: none;
+        }
+    }
+
+.ubo-icon {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    display: inline-flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.1em;
+    position: relative;
+    }
+.ubo-icon > * {
+    pointer-events: none;
+    }
+.ubo-icon.disabled,
+.disabled > .ubo-icon,
+.ubo-icon[disabled],
+[disabled] > .ubo-icon {
+    color: #000;
+    fill: #000;
+    opacity: 0.25;
+    stroke: var(--fg-button-disabled);
+    pointer-events: none;
+    }
+.ubo-icon > svg {
+    height: 1em;
+    width: 1em;
+    }
